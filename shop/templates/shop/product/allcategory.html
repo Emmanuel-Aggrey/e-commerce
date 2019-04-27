@@ -1,0 +1,52 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+{% if category %}{{ category.name }} {% else %} Products {% endif %}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container-fluid">
+  
+
+    <h4 class="text-center "> <u>All Categories</u></h4><hr>
+
+    <form method="GET" action="">
+
+  <input class="mx-4 mb-5 allign-center px-3" type="text" name="keyword" id="" placeholder="search" value="{{ request.GET.keyword }}">
+  <button type="submit">search</button>
+
+<hr>
+
+{% if categorys %}
+<!-- <h5>{{ categorys|length }}</5> -->
+    {% else %}
+    <h4 class="text-danger"> sorry no result mach your search</h4>
+{% endif %}
+
+{% for allcategory in categorys %}
+
+<a href="{% url 'shop:allrelated' allcategory.id %}">
+  <div class="card-deck">
+    <div class="card text-center">
+      {% if allcategory.image %}
+       <img class="float-left img-thumbnail" src="{{ allcategory.image.url }}" alt="">
+      {% endif %}
+     
+      <div class="card-body">
+        <!-- <h5 class="card-title">Title</h5> -->
+        <p class="card-text text-capitalize">{{  allcategory.name }}</p>
+      </div>
+      <hr>
+    </div>
+  </div>
+</a>
+<br>
+
+{% endfor %}
+
+</div>
+
+{% endblock  %}

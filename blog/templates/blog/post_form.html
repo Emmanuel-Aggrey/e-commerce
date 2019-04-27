@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Create post{% endblock %}
+{% block stylesheet %}{% endblock %}
+{% block content %}
+<div class="card">
+  <h4 class="card-header">{{ header }}</h4>
+  <div class="card-body">
+
+    <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+   {{ form|crispy }}
+
+    <input type="submit" value="Create post">
+    </form>
+    <p class="text-muted text-center">click on choose file to upload an image <br> <em>its optional</em></p>
+    
+    
+  </div>
+</div>
+{% endblock %}
+
