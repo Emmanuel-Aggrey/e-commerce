@@ -164,6 +164,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = secret.EMAIL
 EMAIL_HOST_PASSWORD = secret.PASSWORD
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 
