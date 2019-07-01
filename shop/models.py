@@ -50,3 +50,16 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('shop:product_detail', args=[self.id, self.slug])
+
+# work on this later
+class Gallary(models.Model):
+    image1 = models.ImageField(upload_to='gallary_img/%Y/%m/%d', blank=True,null=True)
+    image2 = models.ImageField(upload_to='gallary_img/%Y/%m/%d', blank=True,null=True)
+    image3 = models.ImageField(upload_to='gallary_img/%Y/%m/%d', blank=True,null=True)
+    image4 = models.ImageField(upload_to='gallary_img/%Y/%m/%d', blank=True,null=True)
+    image5 = models.ImageField(upload_to='gallary_img/%Y/%m/%d', blank=True,null=True)
+    image6 = models.ImageField(upload_to='gallary_img/%Y/%m/%d', blank=True,null=True)
+
+
+    def __str__(self):
+        return f'gallary' 

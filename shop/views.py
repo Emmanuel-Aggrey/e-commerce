@@ -1,14 +1,17 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db.models import Q
-from .models import Category, Product
+from .models import Category, Product, Gallary
 from cart.forms import CartAddProductForm
 
 
 def listAll(request):    
+    gallary = Gallary.objects.all()
+    
     # allproduct =Product.objects.all().order_by('-created_at')
     queryset_list  = Product.objects.filter(available=True) 
 
+    # not paginating 
     paginator = Paginator(queryset_list, 2)
     page = request.GET.get('page')
     paginator_list = paginator.get_page(page)
@@ -24,7 +27,7 @@ def listAll(request):
 
     context ={
         'allproduct':queryset_list,
-      
+        'gallarys':gallary
           
     }
 
@@ -70,6 +73,7 @@ def unique_faqs(request):
 
 
 def product_list(request, category_slug=None):
+   
     category = None
     categories = Category.objects.all()
     queryset_list = Product.objects.filter(available=True)
@@ -85,6 +89,7 @@ def product_list(request, category_slug=None):
         'category': category,
         'categories': categories,
         'products': queryset_list,
+        
     }
     return render(request, 'shop/product/list.html', context)
 
@@ -115,3 +120,12 @@ def search_product(request):
 
     return render(request, 'shop/product/search.html',context)
 
+
+def mygallery (request):
+
+    gallary = Gallary.objects.all()
+
+    context = {
+        'gallary': gallary,
+    }
+    return render(request,'shop/partials/carousel.html', context )

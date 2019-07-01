@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-import dj_database_url 
-from . import setingsfile
+from . import secret
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,7 +25,7 @@ SECRET_KEY = 'jf$ac236s)uv)6xa&o0#@wmt+37zvlwf=atbi)%et^7=%3#$bb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['uniqpab.herokuapp.com']
+ALLOWED_HOSTS = []
 # '192.168.101.14'
 
 
@@ -45,11 +44,11 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'django.contrib.humanize',
     'crispy_forms',
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -84,17 +83,12 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
 
 
 # Password validation
@@ -132,21 +126,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 
-STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
+
 STATIC_URL = '/static/'
-
-
-
-# Extra lookup directories for collectstatic to find static files
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
-
-#  Add configuration for static files storage using whitenoise
 
 
 MEDIA_URL = '/media/'  # or any prefix you choose
@@ -154,7 +137,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'products/')
+# # MEDIA_ROOT = os.path.join(BASE_DIR, 'products/')
 
 CART_SESSION_ID = 'cart'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -166,14 +149,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = setingsfile.EMAIL
-EMAIL_HOST_PASSWORD = setingsfile.PASSWORD
-
-#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
+EMAIL_HOST_USER = secret.EMAIL
+EMAIL_HOST_PASSWORD = secret.PASSWORD
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': setingsfile.CLOUD_NAME,
-    'API_KEY': setingsfile.API_KEY,
-    'API_SECRET': setingsfile.SECRET_KEY
+    'CLOUD_NAME': 'diadx3thq',
+    'API_KEY': '269433284838771',
+    'API_SECRET': 'yF0eHfRQPljcYW8uGxggGoiRF6M'
 }

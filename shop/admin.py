@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product
+from .models import Category, Product,Gallary
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -18,4 +18,5 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Gallary)
 

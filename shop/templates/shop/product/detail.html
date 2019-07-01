@@ -1,10 +1,13 @@
 {% extends 'shop/base.html' %}
+
 {% load static %}
+
 {% block title %}
 {% if category %}{{ category.name }} {% else %} Products {% endif %}
 {% endblock %}
 
 {% block content %}
+
 <div class="container">
     <div class="row" style="margin-top: 6%">
 
@@ -22,30 +25,30 @@
                             </nav>
                             <div class="col-md-6 text-right">
                                 <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}"
-                                    alt="..." style="height: 170px; width: auto">
+                                    alt="..." style="height: 300px; width: auto">
                             </div>
                             <!-- Thumbnails -->
 
                             <div class="row mb-5 thumbs text-center">
                                 {% if product.image1 %}
                                 <div class="col-sm-4 col-md-4 col-lg-4">
-                                    <a href="{{ product.image1.url }}" data-lightbox="products-images">
+                                    <a href="" data-lightbox="products-images">
 
-                                        <img src="{{ product.image1.url }}" alt="" class="img-fluid">
+                                        <img src="" alt="" class="img-fluid">
                                     </a>
                                 </div>
                                 {% endif %}
                                 {% if product.image2 %}
                                 <div class=" col-sm-4  col-md-4 col-lg-4">
-                                    <a href="{{ product.image2.url }}" data-lightbox="products-images">
-                                        <img src="{{  product.image2.url }}" alt="" class="img-fluid">
+                                    <a href="" data-lightbox="products-images">
+                                        <img src="" alt="" class="img-fluid">
                                     </a>
                                 </div>
                                 {% endif %}
                                 {% if product.image3 %}
                                 <div class="col-sm-4  col-md-4 col-lg-4">
-                                    <a href="{{ product.image3.url }}" data-lightbox="products-images">
-                                        <img src="{{ product.image3.url }}" alt="" class="img-fluid">
+                                    <a href="" data-lightbox="products-images">
+                                        <img src="" alt="" class="img-fluid">
                                     </a>
                                 </div>
 
@@ -53,6 +56,91 @@
 
                             </div>
                             <!--end of  Thumbnails -->
+
+<!-- carousel -->
+
+<!DOCTYPE html>
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href=" {% static 'css/carousel_style.css' %} "> 
+
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <div class="container">
+       
+      <div id="logoCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators black">
+  
+          <li data-target="#logoCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#logoCarousel" data-slide-to="1"></li>
+          <li data-target="#logoCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+
+          <div class="item active">
+
+            {% if  product.image2 %}
+            
+             <img src=" {{  product.image2.url  }} " alt="no image available" >
+            {% endif %}
+           
+            <div class="carousel-caption">
+               
+                <!-- <h3 class="text-left">GH₵: {{ product.price }}</h3> -->
+
+            </div>
+          </div>
+
+          <div class="item">
+
+
+            {% if  product.image1 %}
+            
+             <img src=" {{  product.image1.url  }} " alt="no image available">
+            {% endif %}
+
+            <div class="carousel-caption">
+             
+              <!-- <h3>{{ product.price }}</h3> -->
+            </div>
+          </div>
+
+          <div class="item">
+
+
+            {% if  product.image3 %}
+            
+             <img src=" {{  product.image3.url  }}  " alt="no image available">
+            {% endif %}
+
+            <div class="carousel-caption">
+             
+              <!-- <h3>{{ product.price }}</h3> -->
+            </div>
+          </div>
+
+          
+         
+
+        <a class="left carousel-control" href="#logoCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#logoCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+    </div>
+    </div>
+
+
+
+<!-- end of carousel -->
+
+
 
                             <div class="col-md-6" style="padding-left: 20px">
                                 <h3>{{ product.name }}</h3>
