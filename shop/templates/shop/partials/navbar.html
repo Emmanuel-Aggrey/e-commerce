@@ -11,24 +11,25 @@
       <span class="icon-bar"></span>
       
     </button>
-     <a href="{% url 'shop:allproductlist' %}">
+     <a href="{% url 'shop:product_list' %}">
       <img class="navbar-brand img-responsive" src="{% static 'img/logo.png'  %}" alt="uniqpab">
    
      </a>
-    <a class="navbar-brand  " href="{% url 'shop:allproductlist' %}" style="color: #ffffff; font-size: 20px;" >uniqpab</a>
+    <a class="navbar-brand  " href="{% url 'shop:product_list' %}" style="color: #ffffff; font-size: 20px;" >uniqpab</a>
     <a class="navbar-brand" href="{% url 'shop:category' %}" style="color: #ffffff ;font-size: 20px;">category</a>
     <a class="navbar-brand" href="{% url 'blog:blog' %}" style="color: #ffffff ;font-size: 20px;">forum</a>
    
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
           {% if request.user.is_authenticated %}
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #ffffff">{{ request.user.username }}<b class="caret"></b></a>
-        
+        <a href="http://127.0.0.1:8000/mainstore/" style="color: #ffffff">shop</a>
+       
         <ul class="dropdown-menu">
           <li><a href="">logout</a></li>
             {% else %}
@@ -40,7 +41,7 @@
          {% endif %}
       </li>
     </ul>
-  </div>
+  </div> -->
   </div>
   
 </nav>

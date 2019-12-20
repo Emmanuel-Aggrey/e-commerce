@@ -48,7 +48,7 @@ def order_create(request):
                 # # mass email
                 email_from = settings.EMAIL_HOST_USER
                 message1 = ('Hello aggrey ', f'a customer with phone { phone_number } and name { name } from {city} had ordered for a product sign in to admin for more info use the phone, email or name to search', email_from, ['aggrey.en@live.com', 'aggrey.en@gmail.com',])
-                message2 = ('Hello ' f'{ name }',' your order had been placed will call u soon thanks for shopping with us', email_from, [customer_email ,])
+                message2 = ('Hello ' f'{ name }',' your order had been placed will call u soon thanks for shopping with us', email_from, [customer_email,])
                 send_mass_mail((message1, message2), fail_silently=False)
 
           

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5df45ead8ff5a000137ed5a6&product=inline-share-buttons" async="async"></script>
     {% block stylesheet %}
   
     {% endblock %}
@@ -19,7 +19,7 @@
 <header class="container menu">
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
 <div>
-  <a class="navbar-brand " href="{% url 'shop:allproductlist' %}">Home</a>
+  <a class="navbar-brand " href="{% url 'shop:product_list' %}">Home</a>
   <a  class="navbar-brand" href="{% url 'blog:blog' %}">forum</a>
   <a  class="navbar-brand" href="{% url 'blog:blog_create' %}">create</a>
 </div>
@@ -33,8 +33,8 @@
 </nav>
 </header>
 <div class="container">
-  <p class="lead text-muted text-center"> ask a question or just share your mind <br>click on creat to share with our wonderful community <br>you can also tell us a product you want 
-  which is not available <a href="{% url 'shop:category' %}">here</a>
+  <p class="lead text-muted text-center"> ask a question or just share your mind <br>click on creat <a class="fa fa-hand-o-up" href="#"></a> to share with our wonderful community <br>you can also tell us a product you want 
+  which is not available <a href="{% url 'shop:category' %}">here</a> 
   </p>
   
 {% if messages %}
@@ -47,7 +47,7 @@
   </button>
   <strong>  {{ message }}!</strong> </div>
 
-    
+
     {% endfor %}
   </div>
 {% endif %}

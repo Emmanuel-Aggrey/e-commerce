@@ -31,7 +31,7 @@ def blog(request):
 
 
 def blog_create(request):
-    form = PostForm(request.POST or None)
+    form = PostForm(request.POST or None,request.FILES)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
